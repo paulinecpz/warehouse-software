@@ -1,4 +1,10 @@
 <h1>New Product</h1>
+<ul>
+  <% @products.each do |product| %>
+    <li><%= product.title %></li>
+    <p><%= product.description%></p>
+  <% end %>
+</ul>
 <form action="/products" method="get">
   <input type="text" name="title" placeholder="nice product">
     <input type="text" name="description" placeholder="Awesome description">
