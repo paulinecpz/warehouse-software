@@ -23,6 +23,14 @@ class ProductsController < ApplicationController
     @product.update(product_params)
   end
 
+  def soft_delete
+    update(soft_deleted: true)  
+  end
+
+  def undelete
+    update(soft_deleted: false)
+  end
+
   private
 
   def product_params
