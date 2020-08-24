@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>WarehouseSoftware</title>
+    <title>Warehouse Software</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,10 @@
   </head>
 
   <body>
+  <div class="container">
+    <%= link_to "Dashboard", dashboard_path %>
+    <%= link_to "Products", products_path %>
     <%= yield %>
+    </div>
   </body>
 </html>
