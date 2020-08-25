@@ -1,15 +1,19 @@
-<h1>New Product</h1>
-<ul>
+<div class="w-50 d-flex justify-content-between align-items-center pb-5">
+<h1>Products</h1>
+    <%= link_to 'Add product', new_product_path, class: "btn btn-primary ml-5" %>
+</div>
   <% @products.each do |product| %>
-    <li><%= product.title %></li>
-    <p><%= product.description%></p>
-
-    <%= link_to 'Edit', edit_product_path(product) %> | 
-    <%= link_to "Delete",
+  <div class="w-50 d-flex align-items-center justify-content-between">
+    <h4><%= product.title %></h4>
+      <div class="">
+        <%= link_to 'Edit', edit_product_path(product), class: "btn btn-primary ml-5"  %>
+        <%= link_to "Delete",
                   product_path(product),
                   method: :delete,
-                  data: { confirm: "Are you sure you want to delete ?" } %>
+                  data: { confirm: "Are you sure you want to delete ?" },class: "btn btn-primary ml-5"  %>
+    </div>
+  </div>
+  <p><%= product.description%></p>
 
+<p>_________________________________________________________________________</p>
   <% end %>
-</ul>
-    <%= link_to 'Add product', new_product_path %>
