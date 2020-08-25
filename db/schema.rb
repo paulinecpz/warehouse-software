@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 2020_08_24_161044) do
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.integer "variant"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "soft_deleted", default: false
@@ -26,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_161044) do
     t.integer "stock_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_id"
+    t.integer "product_id", null: false
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
