@@ -13,6 +13,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.save
+    redirect_to products_path
+
   end
   def edit
     @product = Product.find(params[:id])
@@ -21,6 +23,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     @product.update(product_params)
+    redirect_to products_path
   end
 
   def soft_delete
@@ -34,6 +37,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, :variant)
+    params.require(:product).permit(:title, :description)
   end
 end
