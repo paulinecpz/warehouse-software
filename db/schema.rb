@@ -18,9 +18,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_161044) do
     t.integer "variant"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "variant_id"
     t.boolean "soft_deleted", default: false
-    t.index ["variant_id"], name: "index_products_on_variant_id"
   end
 
   create_table "variants", force: :cascade do |t|
@@ -28,6 +26,8 @@ ActiveRecord::Schema.define(version: 2020_08_24_161044) do
     t.integer "stock_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_id"
+    t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
 end
