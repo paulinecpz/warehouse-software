@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
+  before_action :load_product, only: [:update, :destroy]
+  
   def index
-    @products = Product.not_deleted
+    @products = Product.all
   end
 
   def show
@@ -9,11 +11,15 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.variant = @variant
+
   end
   def create
     @product = Product.new(product_params)
+    @product.variant = @variant
     @product.save
     redirect_to products_path
+    
 
   end
   def edit
@@ -21,17 +27,16 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
     @product.update(product_params)
     redirect_to products_path
   end
 
-  def soft_delete
-    update(soft_deleted: true)  
+  def destroy
+    @product.update(soft_deleted: true)
+    redirect_to products_path
   end
-
-  def undelete
-    update(soft_deleted: false)
+  def load_product
+    @product = Product.find(params[:id])
   end
 
   private
