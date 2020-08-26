@@ -9,6 +9,7 @@ class VariantsController < ApplicationController
 
   def new
     @variant = Variant.new
+    @product = Product.new(variant: @variant)
   end
 
   def create

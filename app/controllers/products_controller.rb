@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
   end
   def create
     @product = Product.new(product_params)
-    @product.variant = @variant
+    @product.variants = @variants
     @product.save
     redirect_to products_path
   end
@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     @product.update(soft_deleted: true)
     redirect_to products_path
   end
-  
+
   def load_product
     @product = Product.find(params[:id])
   end
