@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :load_product, only: [:update, :destroy]
   
   def index
-    @products = Product.all
+    @products = Product.all.order('created_at DESC')
   end
 
   def show

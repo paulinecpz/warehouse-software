@@ -6,6 +6,7 @@ ruby '2.5.1'
 gem 'simple_form'
 gem 'groupdate'
 gem "chartkick"
+gem 'rspec-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
