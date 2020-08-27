@@ -17,8 +17,15 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save
-    redirect_to products_path
+    @product.variants.each do |v|
+      if Variant.where(sku: v.sku).exists?
+        flash[:alert] = "SKU already taken."
+        render :new
+      else
+        @product.save
+        redirect_to products_path
+      end
+    end
   end
 
   def edit

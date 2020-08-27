@@ -3,10 +3,10 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require("@rails/ujs").start()
-require("turbolinks").start()
-require("@rails/activestorage").start()
-require("channels")
+require("@rails/ujs").start();
+require("turbolinks").start();
+require("@rails/activestorage").start();
+require("channels");
 require("chartkick");
 require("chart.js");
 
@@ -16,3 +16,24 @@ require("chart.js");
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+const newVariant = () => {
+  const variantForm = document.getElementById("variant_form");
+  variantForm.style.width = "250px";
+};
+
+function deleteVariant() {
+  document.getElementById("variant_form").style.width = "0";
+}
+
+$(document).ready(() => {
+  const AddVariant = document.getElementById("new_variant_btn");
+  AddVariant.addEventListener("click", () => {
+    newVariant();
+    console.log("yo");
+  });
+
+  const closeVariant = document.getElementById("delete_variant_btn");
+  closeVariant.addEventListener("click", () => {
+    deleteVariant();
+  });
+});

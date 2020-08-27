@@ -1,11 +1,18 @@
-<div class="w-50 d-flex justify-content-between align-items-center pb-5">
-<%= simple_form_for @product do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.simple_fields_for :variants do |v| %>
-  <%= v.input :sku %>
-  <%= v.input :stock_quantity %>
+<div class="d-flex justify-content-between align-items-center pb-5">
+  <%= simple_form_for @product do |product| %>
+    <%= product.input :title %>
+    <%= product.input :description %>
+      <div class="d-flex justify-content-between align-items-center">
+        <h3>Variants</h3>
+        <button type="button" id="new_variant_btn" >Add new variant</button>
+      </div>
+      <div id="variant_form">
+        <%= product.simple_fields_for :variants do |v| %>
+        <%= v.input :sku %>
+        <%= v.input :stock_quantity %>
+        <button type="button" id="delete_variant_btn" >Delete variant</button>
+        <% end %>
+      </div>
+    <%= product.button :submit, class: 'btn btn-primary' %>
   <% end %>
-  <%= f.button :submit, class: 'btn btn-primary' %>
-<% end %>
 </div>
