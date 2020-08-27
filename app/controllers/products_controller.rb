@@ -11,11 +11,12 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.variants.build
 
   end
+
   def create
     @product = Product.new(product_params)
-    @product.variants = @variants
     @product.save
     redirect_to products_path
   end
@@ -41,6 +42,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description)
+    params.require(:product).permit(:title, :description, variants_attributes: [:sku, :stock_quantity])
   end
 end
