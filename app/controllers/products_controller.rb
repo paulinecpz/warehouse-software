@@ -17,14 +17,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.variants.each do |v|
-      if Variant.where(sku: v.sku).exists?
-        flash[:alert] = "SKU already taken."
-        render :new
-      else
-        @product.save
-        redirect_to products_path
-      end
+    if @product.save
+      redirect_to products_path
+    else
+      render :new
     end
   end
 
@@ -49,6 +45,6 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:title, :description, variants_attributes: [:sku, :stock_quantity])
+    params.require(:product).permit(:title, :description, variants_attributes: [:sku, :stock_quantity, :_destroy])
   end
 end

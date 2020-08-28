@@ -18,21 +18,26 @@ require("chart.js");
 // const imagePath = (name) => images(name, true)
 const newVariant = () => {
   const variantForm = document.getElementById("variant_form");
-  variantForm.style.width = "250px";
+  const variantFormCopy = variantForm.cloneNode(true);
+  const variantParent = document.getElementById("variant_parent");
+  variantParent.appendChild(variantFormCopy);
+  const closeVariant = variantFormCopy.getElementsByClassName(
+    "delete_variant_btn"
+  )[0];
+  closeVariant.addEventListener("click", () => {
+    deleteVariant();
+  });
 };
 
 function deleteVariant() {
-  document.getElementById("variant_form").style.width = "0";
+  document.getElementById("variant_form").remove();
 }
-
-$(document).ready(() => {
+document.addEventListener("turbolinks:load", function () {
   const AddVariant = document.getElementById("new_variant_btn");
   AddVariant.addEventListener("click", () => {
     newVariant();
-    console.log("yo");
   });
-
-  const closeVariant = document.getElementById("delete_variant_btn");
+  const closeVariant = document.getElementsByClassName("delete_variant_btn")[0];
   closeVariant.addEventListener("click", () => {
     deleteVariant();
   });
