@@ -1,8 +1,0 @@
-<%= simple_form_for [ @product, @variant ] do |f| %>
-  <%= f.label :sku %>
-  <%= f.input :sku %>
-  <%= f.label :stock_quantity %>
-  <%= f.number_field :stock_quantity %>
-
-  <%= f.submit "Add new variant", class: "btn btn-primary" %>
-<% end %>
